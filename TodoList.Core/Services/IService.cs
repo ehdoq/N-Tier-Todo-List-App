@@ -7,12 +7,12 @@ namespace TodoList.Core.Services
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> AddAsync(T entity);
+        Task<T> CreateAsync(T entity);
         Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> entities);
         T Update(T entity);
         void Delete(T entity);
         void DeleteRange(IEnumerable<T> entities);
-        Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> WhereAsync(Expression<Func<T, bool>> predicate);
         Task<T> FindByConditionAsync(Expression<Func<T, bool>> predicate);
     }
 }
