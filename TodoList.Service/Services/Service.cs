@@ -69,5 +69,10 @@ namespace TodoList.Service.Services
         {
             return await _repository.FindByConditionAsync(predicate);
         }
+
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _repository.AnyAsync(predicate);
+        }
     }
 }

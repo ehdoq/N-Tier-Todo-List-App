@@ -62,5 +62,10 @@ namespace TodoList.Repository.Repositories
         {
             return await _dbSet.SingleOrDefaultAsync(predicate);
         }
+
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.AnyAsync(predicate);
+        }
     }
 }
