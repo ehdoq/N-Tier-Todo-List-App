@@ -38,8 +38,7 @@ namespace TodoList.API.Controllers
         [HttpGet("{id}/Todo"), ServiceFilter(typeof(NotFoundFilter<User>))]
         public async Task<IActionResult> GetWithTodoByIdAsync(int id)
         {
-            var userWithTodo = _mapper.Map<IEnumerable<UserDto>>(await _userService.GetWithTodosByIdAsync(id));
-            return CreateActionResult(CustomResponseDto<IEnumerable<UserDto>>.Success(200, userWithTodo));
+            return CreateActionResult(await _userService.GetWithTodosByIdAsync(id));
         }
 
         [HttpPost]
@@ -49,7 +48,7 @@ namespace TodoList.API.Controllers
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
-        [HttpPut, ServiceFilter(typeof(NotFoundFilter<User>))]
+        [HttpPut]
         public IActionResult Update(UserDto userDto)
         {
             _userService.Update(_mapper.Map<User>(userDto));

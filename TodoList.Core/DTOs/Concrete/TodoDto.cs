@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TodoList.Core.DTOs.Abstract;
 using TodoList.Core.Entities.Concrete;
 
 namespace TodoList.Core.DTOs.Concrete
 {
-    public class TodoDto
+    public class TodoDto : BaseEntityDto, IEntityDto
     {
         [Required]
         public string? Title { get; set; }
